@@ -46,27 +46,27 @@ android {
 
 dependencies {
     // Retrofit Components
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
 
     // Lifecycle Components
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.4")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.extensions)
 
     //  Kotlin Components
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    api(libs.kotlinx.coroutines.core)
+    api(libs.kotlinx.coroutines.android)
 
     // Glide Component
-    implementation("com.github.bumptech.glide:glide:4.16.0")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
 
     // Dagger Components
-    implementation("com.google.dagger:dagger:2.44.2")
-    annotationProcessor("com.google.dagger:dagger-compiler:2.44.2")
+    implementation(libs.dagger)
+    annotationProcessor(libs.dagger.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
