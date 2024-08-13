@@ -1,5 +1,6 @@
 package id.aaaabima.chucknorrisjokes.data.di
 
+import dagger.Module
 import dagger.Provides
 import id.aaaabima.chucknorrisjokes.BuildConfig
 import id.aaaabima.chucknorrisjokes.data.repository.source.network.ChuckNorrisJokesApi
@@ -10,7 +11,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
+@Module
 class NetworkModule {
+    @Provides
+    @Singleton
+    fun provideBaseURL() = BuildConfig.BASE_URL
+
     @Provides
     @Singleton
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
@@ -25,9 +31,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClientBuilder(
-        httpLoggingInterceptor: HttpLoggingInterceptor
-    ): OkHttpClient.Builder =
+    fun provideOkHttpClientBuilder(): OkHttpClient.Builder =
         OkHttpClient.Builder()
             .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
             .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS)
