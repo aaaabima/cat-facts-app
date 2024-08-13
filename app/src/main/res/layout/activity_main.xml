@@ -7,6 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
         android:id="@+id/llSearch"
@@ -26,12 +35,14 @@
             android:padding="8dp"
             android:textSize="16sp"
             android:inputType="text"
-            android:hint="@string/search_for_quote"
+            android:imeOptions="actionSearch"
+            android:hint="@string/search_for_joke"
             android:layout_marginStart="16dp"
-            android:autofillHints="Search for Quote"
+            android:autofillHints="Search for Joke"
             android:layout_height="wrap_content" />
 
         <ImageView
+            android:id="@+id/ivSearch"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:src="@drawable/ic_search"
@@ -44,9 +55,10 @@
         android:id="@+id/rvJokes"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginHorizontal="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llSearch" />
+        app:layout_constraintTop_toBottomOf="@id/llSearch"
+        tools:listitem="@layout/item_joke_layout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
