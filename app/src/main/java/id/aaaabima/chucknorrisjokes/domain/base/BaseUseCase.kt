@@ -1,30 +1,38 @@
 package id.aaaabima.chucknorrisjokes.domain.base
 
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.functions.Action
+import io.reactivex.rxjava3.schedulers.Schedulers
 
-abstract class BaseUseCase<Param, Result>(
-    private val defaultDispatcher: CoroutineDispatcher = Dispatchers.IO
-) {
+abstract class BaseUseCase<Param, Result : Any> {
 
-    abstract fun buildUseCase(param: Param): Flow<Result>
+    private val disposable = CompositeDisposable()
+
+    abstract fun buildUseCase(param: Param): Observable<Result>
 
     fun execute(
         param: Param,
         onSuccess: (Result) -> Unit = {},
         onError: (Throwable) -> Unit = {},
-        coroutineScope: CoroutineScope
+        onDispose: Action = Action { },
     ) {
         buildUseCase(param)
-            .flowOn(defaultDispatcher)
-            .onEach { onSuccess.invoke(it) }
-            .catch { onError.invoke(it) }
-            .launchIn(coroutineScope)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnDispose(onDispose)
+            .subscribe({
+                onSuccess(it)
+            }, {
+                onError(it)
+                dispose()
+            })
+            .let { disposable.add(it) }
+
+    }
+
+    fun dispose() {
+        disposable.clear()
     }
 }

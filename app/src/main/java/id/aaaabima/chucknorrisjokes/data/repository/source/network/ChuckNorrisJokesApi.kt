@@ -1,14 +1,14 @@
 package id.aaaabima.chucknorrisjokes.data.repository.source.network
 
 import id.aaaabima.chucknorrisjokes.data.model.JokesResponse
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ChuckNorrisJokesApi {
 
-    @GET("jokes/search/{query}")
+    @GET("search")
     fun searchJokes(
-        @Path("query") query: String
-    ): Flow<JokesResponse>
+        @Query("query") query: String
+    ): Observable<JokesResponse>
 }

@@ -1,9 +1,9 @@
 package id.aaaabima.chucknorrisjokes.domain
 
 import id.aaaabima.chucknorrisjokes.domain.model.Joke
-import kotlinx.coroutines.flow.Flow
+import io.reactivex.rxjava3.core.Observable
 
 interface ChuckNorrisJokesRepository {
 
-    fun searchJokes(query: String): Flow<List<Joke>>
+    fun searchJokes(query: String): Observable<List<Joke>>
 }

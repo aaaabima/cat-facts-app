@@ -4,8 +4,7 @@ import id.aaaabima.chucknorrisjokes.data.mapper.toJoke
 import id.aaaabima.chucknorrisjokes.data.repository.source.ChuckNorrisJokesEntityDataFactory
 import id.aaaabima.chucknorrisjokes.domain.ChuckNorrisJokesRepository
 import id.aaaabima.chucknorrisjokes.domain.model.Joke
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import io.reactivex.rxjava3.core.Observable
 import javax.inject.Inject
 
 class ChuckNorrisJokesEntityRepository @Inject constructor(
@@ -13,7 +12,7 @@ class ChuckNorrisJokesEntityRepository @Inject constructor(
 ) : ChuckNorrisJokesRepository {
     private fun getRepository() = chuckNorrisJokesEntityDataFactory.createEntityData()
 
-    override fun searchJokes(query: String): Flow<List<Joke>> {
+    override fun searchJokes(query: String): Observable<List<Joke>> {
         return getRepository().searchJokes(query).map { jokesResult ->
             jokesResult.map { it.toJoke() }
         }

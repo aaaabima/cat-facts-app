@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-parcelize")
     kotlin("kapt")
 }
 
@@ -21,11 +22,11 @@ android {
     buildTypes {
         debug {
             isMinifyEnabled = false
-            buildConfigField("String", "BASE_URL", "\"https://api.chucknorris.io/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.chucknorris.io/jokes/\"")
         }
         release {
             isMinifyEnabled = true
-            buildConfigField("String", "BASE_URL", "\"https://api.chucknorris.io/\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.chucknorris.io/jokes/\"")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -50,6 +51,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
     implementation(libs.logging.interceptor)
+    implementation(libs.adapter.rxjava3)
 
     // Lifecycle Components
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
@@ -66,10 +68,12 @@ dependencies {
     annotationProcessor(libs.compiler)
 
     // Dagger Components
-//    implementation("com.google.dagger:dagger:2.44.2")
-//    annotationProcessor(libs.dagger.compiler)
-    implementation("com.google.dagger:dagger:2.52")
-    kapt("com.google.dagger:dagger-compiler:2.52")
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+
+    // RxAndroid Components
+    implementation(libs.rxandroid)
+    implementation(libs.rxjava)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
