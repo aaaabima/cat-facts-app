@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Chuck Norris Jokes</string>
+    <string name="search">Search</string>
+    <string name="search_for_quote">Search for Quote</string>
 </resources>
