@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "773366648976",
+    "project_id": "cat-facts-app-cff5a",
+    "storage_bucket": "cat-facts-app-cff5a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773366648976:android:8f2211ebfebcae214a8815",
+        "android_client_info": {
+          "package_name": "id.aaaabima.catfactsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTpOEE7vZdlY6zm0N1qiy2w3oY7-sZdXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

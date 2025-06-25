@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep class com.google.gson.** { *; }
+-keep class retrofit2.** { *; }
+-keep class com.squareup.retrofit2.** { *; }
+-keep interface com.squareup.retrofit2.** { *; }
+-keep class id.aaaabima.catfactsapp.data.model.** { *; }
+-keep class id.aaaabima.catfactsapp.domain.model.** { *; }
+-keep class id.aaaabima.catfactsapp.ui.model.** { *; }
