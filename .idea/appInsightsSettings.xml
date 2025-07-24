@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="id.aaaabima.catfactsapp" />
+                  <option name="mobileSdkAppId" value="1:773366648976:android:8f2211ebfebcae214a8815" />
+                  <option name="projectId" value="cat-facts-app-cff5a" />
+                  <option name="projectNumber" value="773366648976" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

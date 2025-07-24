@@ -108,7 +108,7 @@ class WebSocketClient(
     fun observeWebSocketEvents(): Flowable<WebSocket.Event> =
         webSocketService.observerWebSocketEvent()
 
-    fun observeMessages(): Flowable<String> =
+    fun observeMessages(): Flowable<WebSocketResponse> =
         webSocketService.observeMessages()
 
 }

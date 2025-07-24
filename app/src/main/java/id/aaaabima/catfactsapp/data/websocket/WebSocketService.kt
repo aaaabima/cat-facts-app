@@ -10,7 +10,7 @@ interface WebSocketService {
     fun observerWebSocketEvent(): Flowable<WebSocket.Event>
 
     @Receive
-    fun observeMessages(): Flowable<String>
+    fun observeMessages(): Flowable<WebSocketResponse>
 
     @Send
     fun sendMessage(message: WebSocketClient.SubscriptionMessage)

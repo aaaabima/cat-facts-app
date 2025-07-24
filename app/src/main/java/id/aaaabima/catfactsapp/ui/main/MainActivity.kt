@@ -198,9 +198,6 @@ class MainActivity : AppCompatActivity(), WebSocketListener {
                         Log.e("WebSocket", "Connection failed: ${event.throwable}")
                         showConnectionStatus("Connection Failed")
                     }
-                    is WebSocket.Event.OnMessageReceived -> {
-                        Log.d("WebSocket", "Message received: ${event.message}")
-                    }
                     else -> {
                         Log.d("WebSocket", "Unknown event: $event")
                     }
@@ -214,6 +211,16 @@ class MainActivity : AppCompatActivity(), WebSocketListener {
             .observeOn(Schedulers.single())
             .subscribe { message ->
                 Log.d("WebSocketObserveMessages", "Received message: $message")
+                if (message.channel == "update_application_version" && message.data != null)
+                    try {
+                        downloadApk(
+                            this@MainActivity,
+                            "http://${message.data.get("apk_url").asString}",
+                            "update.apk"
+                        )
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
             }
             .let { compositeDisposable.add(it) }
     }
